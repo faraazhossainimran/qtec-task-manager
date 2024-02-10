@@ -19,7 +19,7 @@ function About (){
         </div>
       </div> */}
       <div className="container mx-auto">
-        <div className="pt-4">
+        <div className="py-2 bg-[#F5F5F5] md:bg-white m-4 md:m-0">
           <div className="hero">
             <div className="hero-content flex-col gap-8 lg:flex-row-reverse">
               <img
@@ -27,8 +27,8 @@ function About (){
                 className="w-[500px] rounded-lg"
               />
               <div>
-                <h1 className="text-4xl font-bold text-[#349DF1]">Move faster as a team</h1>
-                <p className="py-6">
+                <h1 className="md:text-4xl text-xl font-bold text-[#349DF1]">Move faster as a team</h1>
+                <p className="md:py-6 py-2">
                   The only project management platform for hybrid work, shaped
                   by users.
                 </p>
@@ -36,18 +36,18 @@ function About (){
             </div>
           </div>
         </div>
-        <div className="py-2">
+        <div className="py-2 bg-[#F5F5F5] md:bg-white m-4 md:m-0">
           <div className="hero">
-            <div className="hero-content flex-col gap-8 lg:flex-row">
+            <div className="hero-content flex-col md:gap-8 gap-2 lg:flex-row">
               <img
                 src="https://i.ibb.co/cvdRfmZ/Businessman-bro.png"
                 className="w-[600px] "
               />
               <div>
-                <h1 className="text-4xl font-bold">
+                <h1 className="md:text-4xl text-xl font-bold text-[#349DF1]">
                   Multi-step projects made easy
                 </h1>
-                <p className="py-6">
+                <p className="md:py-6 py-2">
                   Simple workflows for complex approvals. Powerful proofing and
                   annotation tools. Use project and action templates for
                   repeatable steps to cut down your work in half.

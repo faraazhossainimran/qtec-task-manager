@@ -14,8 +14,8 @@ function Banner() {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="">
-            <h1 className="mb-5 text-5xl font-bold text-white">Scheduler <span className='text-[#349DF1]'>Task Manager</span></h1>
-            <p className="mb-5 text-xl">
+            <h1 className="md:mb-5 py-2 md:text-5xl text-2xl font-bold text-white">Scheduler <span className='text-[#349DF1]'>Task Manager</span></h1>
+            <p className="mb-5 md:text-xl text-md">
             Empower Productivity, Master Efficiency: Your Tasks, Our Priority.
             </p>
             <button className="p-2 rounded-md bg-[#349DF1] text-xl text-white font-semibold"><Link to={"/"}>Let's Explore</Link></button> 

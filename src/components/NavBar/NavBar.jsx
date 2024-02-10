@@ -21,7 +21,7 @@ function NavBar () {
         <li><a>Item 3</a></li>
       </ul> */}
     </div>
-    <a className=" text-3xl font-semibold text-[#349DF1]">Qtec Task Manager</a>
+    <a className=" md:text-3xl font-semibold text-[#349DF1]">Qtec Task Manager</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     {/* <ul className="menu menu-horizontal px-1">
