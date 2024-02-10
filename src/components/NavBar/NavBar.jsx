@@ -20,7 +20,7 @@ function NavBar () {
         <li><a>Item 3</a></li>
       </ul> */}
     </div>
-    <a className="btn btn-ghost text-3xl">Qtec Task Manager</a>
+    <a className=" text-3xl font-semibold text-[#349DF1]">Qtec Task Manager</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     {/* <ul className="menu menu-horizontal px-1">
@@ -38,7 +38,7 @@ function NavBar () {
     </ul> */}
   </div>
   <div className="navbar-end">
-    <a className="btn">Login</a>
+    <a className="p-2 rounded-md bg-[#349DF1] text-white font-semibold">Login</a>
   </div>
 </div>
     )
