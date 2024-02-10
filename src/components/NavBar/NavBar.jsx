@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 
 function NavBar () {
     return (
-        <div className="navbar bg-base-100 container mx-auto py-2">
+<div className='border-b-stone-300 border-b-2'>
+<div className="navbar bg-base-100 container mx-auto py-2 ">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -41,6 +42,7 @@ function NavBar () {
   <div className="navbar-end">
     <a className="p-2 rounded-md bg-[#349DF1] text-white font-semibold"><Link to={"/signin"}>Sign in</Link></a>
   </div>
+</div>
 </div>
     )
 }

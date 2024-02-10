@@ -5,6 +5,8 @@ import Home from "../pages/Home/Home/Home";
 import Main from "../Layout/Main";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
+import Dashboard from "../Layout/Dashboard";
+import TodoForm from "../pages/Dashboard/TodoForm/TodoForm";
 
   const router = createBrowserRouter([
     {
@@ -25,6 +27,16 @@ import SignUp from "../pages/SignUp/SignUp";
         }
       ]
     },
+    {
+      path: "/dashboard",
+      element: <Dashboard></Dashboard>,
+      children: [
+        {
+          path: "/dashboard",
+          element: <TodoForm></TodoForm>
+        }
+      ]
+    }
   ]);
 
   export default router
