@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function NavBar () {
     return (
@@ -38,7 +39,7 @@ function NavBar () {
     </ul> */}
   </div>
   <div className="navbar-end">
-    <a className="p-2 rounded-md bg-[#349DF1] text-white font-semibold">Login</a>
+    <a className="p-2 rounded-md bg-[#349DF1] text-white font-semibold"><Link to={"/signin"}>Sign in</Link></a>
   </div>
 </div>
     )
