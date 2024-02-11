@@ -1,34 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 
-function TodoForm() {
-    
-  const handleTodoForm = (e) => {
-    e.preventDefault();
-  };
+function TodoForm(props) {
+  const [value, setValue] = useState("");
+//   const [priority, setPriority] = useState("")
+  const handleSubmit = (e) => {
+    // prevent default action
+      e.preventDefault();
+      if (value) {
+        // add todo
+        props.addTodo(value);
+        // clear form after submission
+        setValue('');
+      }
+    };
   return (
     <div>
       <h1 className="text-xl text-center mt-4">Todoform</h1>
-      <form onSubmit={handleTodoForm}>
+      <form onSubmit={handleSubmit}>
         <div className="h-[500px] bg-red-100">
           <div className="join flex justify-center py-12">
             <div>
-              <div>
-                <input
-                  className="input input-bordered join-item"
-                  placeholder="Write your todo here"
-                />
-              </div>
+              <input
+              value={value}
+                onChange={(e) => setValue(e.target.value)}
+                className="input input-bordered join-item"
+                placeholder="Write your todo here"
+              />
             </div>
-            <select className="select select-bordered join-item">
-              <option disabled selected>
+            {/* <select
+            value={priority}
+            onChange={(e) => setPriority(e.target.value)}
+            className="select select-bordered join-item">
+              <option disabled value="Set Priority" selected>
                 Set Priority
               </option>
-              <option>Low</option>
-              <option>Medium</option>
-              <option>High</option>
-            </select>
+              <option value={"Low"}>Low</option>
+              <option value={"Medium"}>Medium</option>
+              <option value={"High"}>High</option>
+            </select> */}
             <div className="indicator">
-              <span className="indicator-item badge badge-secondary">new</span>
               <button type="submit" className="btn join-item">
                 Add Todo
               </button>

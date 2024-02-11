@@ -22,7 +22,7 @@ function NavBar () {
         <li><a>Item 3</a></li>
       </ul> */}
     </div>
-    <a className=" md:text-3xl font-semibold text-[#349DF1]">Qtec Task Manager</a>
+    <Link to={"/"}><a className=" flex md:text-3xl font-semibold text-[#349DF1]"><img src='https://i.ibb.co/hKqxh0M/icons8-time-management-skills-96.png' className='w-10 mr-2'/>Qtec Task Manager</a></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     {/* <ul className="menu menu-horizontal px-1">
