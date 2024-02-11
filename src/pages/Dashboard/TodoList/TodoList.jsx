@@ -1,14 +1,18 @@
 import React from "react";
 import { FaEyeSlash } from "react-icons/fa";
+import { MdOutlineDownloadDone } from "react-icons/md";
 
 function TodoList({ list, Update, Remove }) {
-    console.log(list.priority);
+  console.log(list.priority);
   return (
     <div className="w-[500px]  mx-auto">
       <div className="flex">
         <ul className="bg-slate-100 w-full my-2">
           <li className="flex my-2">
-            <span onClick={() => Update(list.id)} className={"w-full flex justify-left items-center"}>
+            <span
+              onClick={() => Update(list.id)}
+              className={"w-full flex justify-left items-center"}
+            >
               <p className="text-left p-4">{list.task}</p>
               {/* status section */}
               <div className="badge badge-info gap-2">
@@ -28,8 +32,16 @@ function TodoList({ list, Update, Remove }) {
                 {list.priority}
               </div>
             </span>
-
-            {/* delete icon */}
+            {/* update todo - icon*/}
+            <span
+              onClick={() => Update(list.id)}
+              className="pt-3 pr-4 cursor-pointer"
+            >
+              <p onClick={() => Update(list.id)}>
+              <MdOutlineDownloadDone size={28}/>
+              </p>
+            </span>
+            {/* delete todo - icon */}
             <span
               onClick={() => Remove(list.id)}
               className="pt-4 pr-4 cursor-pointer"

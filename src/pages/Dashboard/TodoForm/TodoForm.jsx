@@ -21,22 +21,38 @@ function TodoForm() {
   }
     const newObj = { id: nextId, task: task, priority: priority, done: false };
     setLists((prevList) => prevList.concat(newObj));
-    console.log("before settask", task);
     setTask(""); // Clear the input field
+    setPriority(""); //clear the priority options
     setNextId((prevId) => prevId + 1);
-    console.log("after settask", task);
   }
-
+// complate the todo
   function Update(id) {
+    console.log('clicked');
     const newList = lists.map((list, i) =>
       list.id === id ? { ...list, done: true } : l
     );
+    console.log('clicked');
     setLists(newList);
   }
-
+// delete todo from the list
   function Remove(id) {
-    const newList = lists.filter((f) => f.id !== id);
-    setLists(newList);
+    Swal.fire({
+      title: "Do you want to Delete this Todo?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+      denyButtonText: `Don't Delete`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        const newList = lists.filter((f) => f.id !== id);
+        setLists(newList);
+        Swal.fire("Delete!", "", "success");
+      } else if (result.isDenied) {
+        Swal.fire("Todo is not deleted yet", "", "info");
+      }
+    });
+
   }
 
   return (
@@ -53,6 +69,7 @@ function TodoForm() {
           <div>
             <input
               type="text"
+              value={task}
               onChange={(e) => setTask(e.target.value)}
               className="input input-bordered join-item"
               placeholder="Write your todo here"
@@ -60,7 +77,8 @@ function TodoForm() {
           </div>
           {/* select */}
           <select
-            task={priority}
+          defaultValue={"Set Priority"}
+            // task={priority}
             onChange={(e) => setPriority(e.target.value)}
             className="select select-bordered join-item"
           >
