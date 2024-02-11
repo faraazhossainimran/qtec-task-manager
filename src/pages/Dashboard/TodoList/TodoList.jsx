@@ -1,13 +1,13 @@
 import React from "react";
 import { FaEyeSlash } from "react-icons/fa";
 import { MdOutlineDownloadDone } from "react-icons/md";
-
+import { IoRocketOutline } from "react-icons/io5";
 function TodoList({ list, Update, Remove }) {
   console.log(list.priority);
   return (
-    <div className="w-[500px]  mx-auto">
+    <div className="w-[500px] mx-auto ">
       <div className="flex">
-        <ul className="bg-slate-100 w-full my-2">
+        <ul className={list.done? "bg-slate-50 w-full my-2 rounded-md border-green-300 border-2" : "bg-slate-100 w-full my-2 rounded-md"}>
           <li className="flex my-2">
             <span
               onClick={() => Update(list.id)}
@@ -15,7 +15,17 @@ function TodoList({ list, Update, Remove }) {
             >
               <p className="text-left p-4">{list.task}</p>
               {/* status section */}
-              <div className="badge badge-info gap-2">
+              <div
+                className={
+                  (list.priority === "Low"
+                    ? "bg-green-200 p-2 rounded-md"
+                    : "") ||
+                  (list.priority === "Medium"
+                    ? "bg-yellow-200 p-2 rounded-md"
+                    : "") ||
+                  (list.priority === "High" ? "bg-red-400 p-2 rounded-md" : "")
+                }
+              >
                 {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -28,19 +38,20 @@ function TodoList({ list, Update, Remove }) {
                     strokeWidth="2"
                     d="M6 18L18 6M6 6l12 12"
                   ></path>
-                </svg> */}
-                {list.priority}
+                </svg> */} 
+                <p className="font-semibold flex">{list.priority === "High" ? (<><IoRocketOutline size={16} className="mr-2 mt-1"/> {list.priority}</>) : (list.priority)} </p>
               </div>
             </span>
             {/* update todo - icon*/}
-            <span
-              onClick={() => Update(list.id)}
-              className="pt-3 pr-4 cursor-pointer"
-            >
-              <p onClick={() => Update(list.id)}>
-              <MdOutlineDownloadDone size={28}/>
-              </p>
-            </span>
+            {list.done ? (
+              ""
+            ) : (
+              <span className="pt-3 pr-4 cursor-pointer">
+                <p onClick={() => Update(list.id)}>
+                  <MdOutlineDownloadDone size={28} />
+                </p>
+              </span>
+            )}
             {/* delete todo - icon */}
             <span
               onClick={() => Remove(list.id)}

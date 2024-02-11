@@ -3,56 +3,78 @@ import TodoList from "../TodoList/TodoList";
 import Swal from "sweetalert2";
 function TodoForm() {
   const [value, setValue] = useState([]);
-  const [lists, setLists] = useState([{ id: 1, task: "playyyy", done: false }]);
+  const [lists, setLists] = useState([]);
   const [task, setTask] = useState("");
-  const [nextId, setNextId] = useState(2);
-  const [priority, setPriority] = useState([])
+  const [nextId, setNextId] = useState(1);
+  const [priority, setPriority] = useState("");
   // This function will be adding task - add function
   function Add() {
     // Look if task and priority are both fiill up by data
-  if (task.trim() === "" || typeof priority !== "string" || priority.trim() === "") {
-    Swal.fire({
-      title: "Wait!",
-      text: "Please fill up all the entry",
-      icon: "error"
-    });
-    // Exit the function, don't execute add fucntion
-    return; 
-  }
+    if (
+      task.trim() === "" ||
+      typeof priority !== "string" ||
+      priority.trim() === ""
+    ) {
+      Swal.fire({
+        title: "Wait!",
+        text: "Please fill up all the entry",
+        icon: "error",
+      });
+      // Exit the function, don't execute add fucntion
+      return;
+    }
     const newObj = { id: nextId, task: task, priority: priority, done: false };
     setLists((prevList) => prevList.concat(newObj));
     setTask(""); // Clear the input field
     setPriority(""); //clear the priority options
     setNextId((prevId) => prevId + 1);
   }
-// complate the todo
+  // complate the todo
   function Update(id) {
-    console.log('clicked');
+    Swal.fire({
+      title: "Great work! Your Todo is Completed",
+      showClass: {
+        popup: `
+          animate__animated
+          animate__fadeInUp
+          animate__faster
+        `,
+      },
+      hideClass: {
+        popup: `
+          animate__animated
+          animate__fadeOutDown
+          animate__faster
+        `,
+      },
+      
+    });
     const newList = lists.map((list, i) =>
-      list.id === id ? { ...list, done: true } : l
+      list.id === id ? { ...list, done: true } : list
     );
-    console.log('clicked');
     setLists(newList);
   }
-// delete todo from the list
+  // delete todo from the list
   function Remove(id) {
     Swal.fire({
-      title: "Do you want to Delete this Todo?",
-      showDenyButton: true,
+      title: "Are you sure?",
+      text: "If you Delete your 'Todo' once, you won't get it back!",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Delete",
-      denyButtonText: `Don't Delete`
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         const newList = lists.filter((f) => f.id !== id);
         setLists(newList);
-        Swal.fire("Delete!", "", "success");
-      } else if (result.isDenied) {
-        Swal.fire("Todo is not deleted yet", "", "info");
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
       }
     });
-
   }
 
   return (
@@ -77,7 +99,7 @@ function TodoForm() {
           </div>
           {/* select */}
           <select
-          defaultValue={"Set Priority"}
+            // defaultValue={"Set Priority"}
             // task={priority}
             onChange={(e) => setPriority(e.target.value)}
             className="select select-bordered join-item"
@@ -99,12 +121,17 @@ function TodoForm() {
       </div>
       {/* </form> */}
       <div>
-      <div className="text-center">
-        <h1 className="my-4">All Todos</h1>
-      </div>
+        <div className="text-center">
+          <h1 className="my-6 text-xl font-semibold">All Todos</h1>
+        </div>
         <ul>
           {lists.map((list, i) => (
-            <TodoList key={i} list={list} Update={Update} Remove={Remove}></TodoList>
+            <TodoList
+              key={i}
+              list={list}
+              Update={Update}
+              Remove={Remove}
+            ></TodoList>
           ))}
         </ul>
       </div>
