@@ -5,6 +5,7 @@ function TodoForm() {
   const [lists, setLists] = useState([{ id: 1, task: "playyyy", done: false }]);
   const [task, setTask] = useState("");
   const [nextId, setNextId] = useState(2);
+  const [priority, setPriority] = useState([])
   // add function
   function Add() {
     const newObj = { id: nextId, task: task, done: false };
@@ -30,12 +31,11 @@ function TodoForm() {
   return (
     <div>
       {/* <form > */}
-      <div className="h-[150px] bg-slate-50">
-        <h1 className="text-xl text-center mt-4 font-semibold">
+      <div className="h-auto py-12 bg-slate-50">
+        <h1 className="text-xl text-center font-semibold">
           Welcome, Imran Hossain
         </h1>
         <p className="text-center text-xl my-2">
-          {" "}
           Your Total todo: {lists.length}
         </p>
         <div className="join flex justify-center py-4">
@@ -70,6 +70,9 @@ function TodoForm() {
       </div>
       {/* </form> */}
       <div>
+      <div className="text-center">
+        <h1 className="my-4">All Todos</h1>
+      </div>
         <ul>
           {lists.map((list, i) => (
             <TodoList list={list} Update={Update} Remove={Remove}></TodoList>
