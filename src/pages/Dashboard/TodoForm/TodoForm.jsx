@@ -1,14 +1,25 @@
 import React, { useState } from "react";
 import TodoList from "../TodoList/TodoList";
+import Swal from "sweetalert2";
 function TodoForm() {
   const [value, setValue] = useState([]);
   const [lists, setLists] = useState([{ id: 1, task: "playyyy", done: false }]);
   const [task, setTask] = useState("");
   const [nextId, setNextId] = useState(2);
   const [priority, setPriority] = useState([])
-  // add function
+  // This function will be adding task - add function
   function Add() {
-    const newObj = { id: nextId, task: task, done: false };
+    // Look if task and priority are both fiill up by data
+  if (task.trim() === "" || typeof priority !== "string" || priority.trim() === "") {
+    Swal.fire({
+      title: "Wait!",
+      text: "Please fill up all the entry",
+      icon: "error"
+    });
+    // Exit the function, don't execute add fucntion
+    return; 
+  }
+    const newObj = { id: nextId, task: task, priority: priority, done: false };
     setLists((prevList) => prevList.concat(newObj));
     console.log("before settask", task);
     setTask(""); // Clear the input field
@@ -75,11 +86,7 @@ function TodoForm() {
       </div>
         <ul>
           {lists.map((list, i) => (
-            <TodoList list={list} Update={Update} Remove={Remove}></TodoList>
-            // <li key={l.id}>
-            //   <span onClick={() => Update(l.id)} className={l.done ? "done" : ""}>{l.task}</span>
-            //   <span onClick={() => Remove(l.id)} className="ml-12 btn">X</span>
-            // </li>
+            <TodoList key={i} list={list} Update={Update} Remove={Remove}></TodoList>
           ))}
         </ul>
       </div>
