@@ -1,21 +1,18 @@
-import React, { useState } from 'react'
-import { v4 as uuidv4 } from 'uuidv4';
+import React, { useState } from 'react';
 import TodoForm from '../TodoForm/TodoForm';
-uuidv4()
+
 function TodoContainer () {
     const [todos, setTodos] = useState([]);
 
-    const addTodo = (todo) => {
-      setTodos([
-        ...todos,
-        { id: uuidv4(), task: todo, completed: false, isEditing: false },
-      ]);
-    }
+    const addTodo = (todoValue) => {
+      setTodos([...todos, { id: 1, value: todoValue }]);
+    };
+
      return (
         <div>
-             {addTodo ? <TodoForm addTodo={addTodo} /> : null}
+              <TodoForm addTodo={addTodo} />
         </div>
-    )
+    );
 }
 
-export default TodoContainer
+export default TodoContainer;
