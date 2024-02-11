@@ -13,11 +13,12 @@ function TodoForm() {
     if (
       task.trim() === "" ||
       typeof priority !== "string" ||
-      priority.trim() === ""
+      priority.trim() === "" ||
+      task.length > 46
     ) {
       Swal.fire({
         title: "Wait!",
-        text: "Please fill up all the entry",
+        text: "Please fill up all the entry ( Make sure your task's text is not more than 40 letters",
         icon: "error",
       });
       // Exit the function, don't execute add fucntion
@@ -47,7 +48,6 @@ function TodoForm() {
           animate__faster
         `,
       },
-      
     });
     const newList = lists.map((list, i) =>
       list.id === id ? { ...list, done: true } : list
@@ -113,7 +113,7 @@ function TodoForm() {
           </select>
           {/* btn */}
           <div className="indicator">
-            <button onClick={Add} type="submit" className="btn join-item">
+            <button onClick={Add} type="submit" className="p-2 rounded-md bg-[#349DF1] text-white font-semibold join-item">
               Add Todo
             </button>
           </div>
@@ -122,7 +122,27 @@ function TodoForm() {
       {/* </form> */}
       <div>
         <div className="text-center">
-          <h1 className="my-6 text-xl font-semibold">All Todos</h1>
+          <h1 className="mt-6 font-semibold">
+            {lists.length > 0 ? (
+              <>
+                <h1 className="text-2xl">All Todos</h1>
+              </>
+            ) : (
+              <>
+                <div className="container mx-auto">
+                  <div className="flex flex-col justify-center items-center">
+                    <h1 className="text-2xl text-[#349DF1]">
+                      Please add a todo to see here..
+                    </h1>
+                    <img
+                      className="-mt-6 w-[500px]"
+                      src="https://i.ibb.co/QXVFcNC/To-do-list-bro.png"
+                    />
+                  </div>
+                </div>
+              </>
+            )}
+          </h1>
         </div>
         <ul>
           {lists.map((list, i) => (

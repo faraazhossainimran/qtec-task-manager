@@ -10,7 +10,7 @@ function TodoList({ list, Update, Remove }) {
         <ul className={list.done? "bg-slate-50 w-full my-2 rounded-md border-green-300 border-2" : "bg-slate-100 w-full my-2 rounded-md"}>
           <li className="flex my-2">
             <span
-              onClick={() => Update(list.id)}
+            //   onClick={() => Update(list.id)}
               className={"w-full flex justify-left items-center"}
             >
               <p className="text-left p-4">{list.task}</p>
@@ -48,7 +48,7 @@ function TodoList({ list, Update, Remove }) {
             ) : (
               <span className="pt-3 pr-4 cursor-pointer">
                 <p onClick={() => Update(list.id)}>
-                  <MdOutlineDownloadDone size={28} />
+                  <MdOutlineDownloadDone size={28} color="#2C5E1A"/>
                 </p>
               </span>
             )}
@@ -58,7 +58,7 @@ function TodoList({ list, Update, Remove }) {
               className="pt-4 pr-4 cursor-pointer"
             >
               <p className="">
-                <FaEyeSlash size={22} />
+                <FaEyeSlash size={22} color="#FF2E2E"/>
               </p>
             </span>
           </li>
