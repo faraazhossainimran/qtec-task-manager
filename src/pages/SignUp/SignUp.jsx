@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 function SignUp() {
+  const {signUp} = useAuth()
   return (
     <div>
       <div className="hero bg-base-200 py-12">
