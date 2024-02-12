@@ -1,7 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth';
 
 function SignIn () {
+  const navigate = useNavigate()
+  const {
+    register,
+    handleSubmit,
+  } = useForm()
+  const {signIn} = useAuth();
+
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+    signIn(email, password)
+    .then((response)=> {
+      console.log(response.user);
+      navigate("/dashboard")
+    })
+    .catch((error)=> {
+      console.log(error);
+    })
+  }
     return (
         <div>
                 <div>
@@ -11,23 +32,13 @@ function SignIn () {
           <h1 className="text-3xl mb-8 font-semibold text-[#349DF1]">Welcome, Sign in Now</h1>
           </div>
           <div className="card shrink-0 w-[350px] shadow-2xl bg-base-100">
-            <form className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Full Name</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Write your full name"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
+            <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                {...register("email")}
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
@@ -39,6 +50,7 @@ function SignIn () {
                   <span className="label-text">Password</span>
                 </label>
                 <input
+                {...register("password")}
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
