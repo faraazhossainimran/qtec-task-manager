@@ -1,7 +1,32 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
+import Swal from 'sweetalert2';
 
 function NavBar () {
+  const {user, logOut} = useAuth();
+  const navigate = useNavigate()
+  const handleLogOut = async() => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will be redirect to homepage!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, log out!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+    });
+    await logOut()
+    navigate("/")
+  }
     return (
 <div className='border-b-stone-300 border-b-2'>
 <div className="navbar bg-base-100 container mx-auto py-2 ">
@@ -40,7 +65,8 @@ function NavBar () {
     </ul> */}
   </div>
   <div className="navbar-end">
-    <a className="p-2 rounded-md bg-[#349DF1] text-white font-semibold"><Link to={"/signin"}>Sign in</Link></a>
+    {user ? <> <a onClick={handleLogOut} className="p-2 rounded-md bg-[#349DF1] text-white font-semibold"><Link to={"/signin"}>Log Out</Link></a></> : <> <a className="p-2 rounded-md bg-[#349DF1] text-white font-semibold"><Link to={"/signin"}>Sign in</Link></a></>}
+   
   </div>
 </div>
 </div>

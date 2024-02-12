@@ -82,7 +82,7 @@ function TodoForm() {
       {/* <form > */}
       <div className="h-auto py-12 bg-slate-50">
         <h1 className="text-xl text-center font-semibold">
-          Welcome, Imran Hossain
+          Welcome to Qtec Task Manager
         </h1>
         <p className="text-center text-xl my-2">
           Your Total todo: {lists.length}

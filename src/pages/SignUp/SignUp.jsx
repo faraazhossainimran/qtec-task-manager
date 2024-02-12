@@ -8,16 +8,25 @@ function SignUp() {
   const {
     register,
     handleSubmit,
+    watch
   } = useForm()
-  const {signUp} = useAuth();
+  const {signUp, userDetails} = useAuth();
 
   const onSubmit = (data) => {
-    const email = data.email;
-    const password = data.password;
-    const name = data.name;
+    const email = data?.email;
+    const password = data?.password;
+    const name = watch("name");
+    console.log(name);
     signUp(email, password)
-    .then((response)=> {
-      console.log(response.user);
+    .then(async (response)=>{
+      console.log(response?.user);
+      userDetails(name)
+      .then((response)=> {
+        console.log(response);
+      })
+      .catch((error)=> {
+        console.log(error);
+      })
       navigate("/dashboard")
     })
     .catch((error)=> {
