@@ -4,3 +4,4 @@ Project Features:
 3. Depend on user login/logout users will get different button.
 4. Build a Todo application Where user can post a todo, delete a todo and mark their priority.
 5. Users can see their total todo's in the dashboard.
+6. Added alert for delete, mark as complete and logout/signup operations.
