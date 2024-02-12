@@ -38,9 +38,9 @@ function SignUp() {
       <div className="hero bg-base-200 py-12">
         <div className="">
           <div className="text-center">
-          <h1 className="text-3xl mb-8 font-semibold text-[#349DF1]">Welcome, SignUp Now</h1>
+          <h1 className="text-3xl mb-8 font-semibold text-[#349DF1] m-4">Welcome, SignUp Now</h1>
           </div>
-          <div className="card shrink-0 w-[350px] shadow-2xl bg-base-100">
+          <div className="card shrink-0 md:w-[350px] m-4 shadow-2xl bg-base-100">
             <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control">
                 <label className="label">
@@ -82,7 +82,7 @@ function SignUp() {
                 <button className="p-2 rounded-md bg-[#349DF1] text-white font-semibold">SignUp</button>
               </div>
             </form>
-            <p className="text-center mb-4 -mt-4 text-xl">
+            <p className="text-center mb-4 -mt-4 text-xl mx-4">
               Already have an account? <Link to={"/signin"}><span className="text-[#349DF1] font-semibold">Sign in</span></Link>
             </p>
           </div>

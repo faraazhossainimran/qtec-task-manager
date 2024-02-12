@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import useAuth from '../../../hooks/useAuth'
 
 function Banner() {
+  const {user} = useAuth()
     return (
         <div>
       <div
@@ -18,7 +20,7 @@ function Banner() {
             <p className="mb-5 md:text-xl text-md">
             Empower Productivity, Master Efficiency: Your Tasks, Our Priority.
             </p>
-            <button className="p-2 rounded-md bg-[#349DF1] text-xl text-white font-semibold"><Link to={"/signup"}>Let's Get Started</Link></button> 
+            {user ? <><button className="p-2 rounded-md bg-[#349DF1] text-xl text-white font-semibold"><Link to={"/dashboard"}>Add Your Todo</Link></button> </> : <><button className="p-2 rounded-md bg-[#349DF1] text-xl text-white font-semibold"><Link to={"/signup"}>Let's Get Started</Link></button> </>}
             {/* <button className="btn btn-primary"><Link to={"/login"}>Let's Explore</Link></button> */}
           </div>
         </div>

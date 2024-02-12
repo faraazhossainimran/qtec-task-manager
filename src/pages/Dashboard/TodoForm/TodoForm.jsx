@@ -25,7 +25,11 @@ function TodoForm() {
       return;
     }
     const newObj = { id: nextId, task: task, priority: priority, done: false };
-    setLists((prevList) => prevList.concat(newObj));
+    localStorage.setItem('todos', JSON.stringify(newObj));
+    const storedTodo = JSON.parse(localStorage.getItem('todos'));
+    console.log("stored todo", storedTodo);
+    setLists((prevList) => prevList.concat(storedTodo));
+    
     setTask(""); // Clear the input field
     setPriority(""); //clear the priority options
     setNextId((prevId) => prevId + 1);
@@ -53,6 +57,7 @@ function TodoForm() {
       list.id === id ? { ...list, done: true } : list
     );
     setLists(newList);
+    localStorage.setItem('todos', JSON.stringify(newList));
   }
   // delete todo from the list
   function Remove(id) {
