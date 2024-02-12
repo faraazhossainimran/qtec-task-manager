@@ -27,9 +27,8 @@ function TodoForm() {
     const newObj = { id: nextId, task: task, priority: priority, done: false };
     localStorage.setItem('todos', JSON.stringify(newObj));
     const storedTodo = JSON.parse(localStorage.getItem('todos'));
-    console.log("stored todo", storedTodo);
+    console.log("stored todo");
     setLists((prevList) => prevList.concat(storedTodo));
-    
     setTask(""); // Clear the input field
     setPriority(""); //clear the priority options
     setNextId((prevId) => prevId + 1);

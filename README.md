@@ -1,8 +1,6 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Project Features:
+1. Home page with Qtech Task Manager logo and navbar
+2. Impleted a login and signup system with firebase
+3. Depend on user login/logout users will get different button.
+4. Build a Todo application Where user can post a todo, delete a todo and mark their priority.
+5. Users can see their total todo's in the dashboard.
