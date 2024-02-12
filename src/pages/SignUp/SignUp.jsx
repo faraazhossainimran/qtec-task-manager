@@ -1,18 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 // import { useForm, SubmitHandler } from "react-hook-form"
 function SignUp() {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm()
   const {signUp} = useAuth();
 
   const onSubmit = (data) => {
-console.log(data);
+    const email = data.email;
+    const password = data.password;
+    const name = data.name;
+    signUp(email, password)
+    .then((response)=> {
+      console.log(response.user);
+      navigate("/dashboard")
+    })
+    .catch((error)=> {
+      console.log(error);
+    })
   }
   return (
     <div>
